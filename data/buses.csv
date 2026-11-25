@@ -1,0 +1,5 @@
+id_bus,patente,capacidad,estado
+1,BCDF12,45,disponible
+2,AB1234,40,disponible
+3,XYZW99,30,no disponible
+4,AC3214,2,disponible
