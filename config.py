@@ -35,3 +35,15 @@ CIUDADES = [
 ]
 POSICION_SUR = 0     # Concepción
 POSICION_NORTE = 5   # Santiago
+
+
+#AHORA VENGO YO (YERSON) JAJA
+
+ARCHIVO_CLIENTES= "data/clientes.csv"
+
+DATOS_CLIENTES=[
+    "rut",
+    "nombre",
+    "telefono",
+    "correo"
+]
