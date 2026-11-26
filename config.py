@@ -10,6 +10,12 @@ ARCHIVO_BUSES = os.path.join(CARPETA_DATOS, "buses.csv")
 ARCHIVO_CIUDADES = os.path.join(CARPETA_DATOS, "ciudades.csv")
 ARCHIVO_VIAJES = os.path.join(CARPETA_DATOS, "viajes.csv")
 
+
+ARCHIVO_PASAJES = os.path.join(CARPETA_DATOS, "pasajes.csv")
+ENCABEZADO_PASAJES = "id_pasaje,id_viaje,id_cliente,id_origen,id_destino,asiento,valor,estado"
+ESTADO_VIGENTE = "vigente"
+ESTADO_ANULADO = "anulado"
+
 ENCABEZADO_BUSES = "id_bus,patente,capacidad,estado"
 ENCABEZADO_CIUDADES = "id_ciudad,nombre,posicion"
 ENCABEZADO_VIAJES = "id_viaje,id_bus,fecha,hora,id_origen,id_destino,tarifa_base"
