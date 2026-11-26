@@ -41,9 +41,5 @@ POSICION_NORTE = 5   # Santiago
 
 ARCHIVO_CLIENTES= "data/clientes.csv"
 
-DATOS_CLIENTES=[
-    "rut",
-    "nombre",
-    "telefono",
-    "correo"
-]
+DATOS_CLIENTES="rut;nombre;telefono;correo"
+
