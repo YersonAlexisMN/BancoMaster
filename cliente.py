@@ -1,5 +1,6 @@
 class Cliente:
 
+<<<<<<< HEAD
     def __init__(
         self,
         id_cliente: str,
@@ -9,6 +10,9 @@ class Cliente:
         apellido_materno: str,
         contacto: str
     ):
+=======
+    def __init__(self, id_cliente: str, rut: str, nombres: str, apellido_paterno: str, apellido_materno: str, contacto: str) -> None:
+>>>>>>> origin/phillips
         self.id_cliente = id_cliente
         self.rut = rut
         self.nombres = nombres
@@ -16,6 +20,7 @@ class Cliente:
         self.apellido_materno = apellido_materno
         self.contacto = contacto
 
+<<<<<<< HEAD
     def __str__(self) -> str:
         return self.info()
 
@@ -37,3 +42,17 @@ def aLinea(self) -> str:
         f"{self.apellido_materno},"
         f"{self.contacto}"
     )
+=======
+    def aLinea(self) -> str:
+        return ",".join([
+            self.id_cliente,
+            self.rut,
+            self.nombres,
+            self.apellido_paterno,
+            self.apellido_materno,
+            self.contacto
+        ])
+
+    def info(self) -> str:
+        return self.id_cliente + " - " + self.rut + " - " + self.nombres + " " + self.apellido_paterno + " " + self.apellido_materno + " - " + self.contacto
+>>>>>>> origin/phillips

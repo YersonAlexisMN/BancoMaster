@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/phillips
 from cliente import Cliente
 from archivos import leerRegistros
 from config import ARCHIVO_CLIENTES, ENCABEZADO_CLIENTES
@@ -6,7 +10,10 @@ from entradas import pedirTexto
 from archivos import reescribirArchivo
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/phillips
 def cargarClientes() -> list[Cliente]:
 
     registros = leerRegistros(
@@ -31,6 +38,10 @@ def cargarClientes() -> list[Cliente]:
 
     return clientes
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/phillips
 def buscarxCodigo(id_cliente: str) -> Cliente | None:
 
     clientes = cargarClientes()
@@ -42,6 +53,10 @@ def buscarxCodigo(id_cliente: str) -> Cliente | None:
 
     return None
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/phillips
 def buscarxRut(rut: str) -> Cliente | None:
 
     clientes = cargarClientes()
@@ -74,13 +89,25 @@ def guardarCliente(cliente: Cliente) -> bool:
         cliente.aLinea()
     )
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/phillips
 def registrarCliente() -> None:
 
     id_cliente = pedirTexto("ID Cliente: ")
     rut = pedirTexto("RUT: ")
+<<<<<<< HEAD
     if buscarxRut(rut) is not None:
         print("ERROR: RUT YA REGISTRADO")
         return
+=======
+
+    if buscarxRut(rut) is not None:
+        print("ERROR: RUT YA REGISTRADO")
+        return
+
+>>>>>>> origin/phillips
     nombres = pedirTexto("Nombres: ")
     apellido_paterno = pedirTexto("Apellido paterno: ")
     apellido_materno = pedirTexto("Apellido materno: ")
@@ -146,6 +173,7 @@ def modificarCliente() -> None:
 
     print("CLIENTE MODIFICADO")
 
+<<<<<<< HEAD
 def buscarxRut(rut: str):
 
     clientes = cargarClientes()
@@ -156,6 +184,8 @@ def buscarxRut(rut: str):
             return cliente
 
     return None
+=======
+>>>>>>> origin/phillips
 
 def menuClientes() -> None:
 
@@ -179,4 +209,8 @@ def menuClientes() -> None:
             modificarCliente()
 
         elif opcion == "4":
+<<<<<<< HEAD
             break
+=======
+            break
+>>>>>>> origin/phillips
