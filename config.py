@@ -43,8 +43,6 @@ POSICION_SUR = 0     # Concepción
 POSICION_NORTE = 5   # Santiago
 
 
-#AHORA VENGO YO (YERSON) JAJA
-
 # Clientes
 ARCHIVO_CLIENTES = os.path.join(CARPETA_DATOS, "clientes.csv")
 ENCABEZADO_CLIENTES = "id_cliente,rut,nombres,apellido_paterno,apellido_materno,contacto"
