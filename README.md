@@ -1,58 +1,54 @@
 # RutaSur Transportes
 
-## Descripción
-Proyecto grupal desarrollado en Python para la gestión de una empresa de transporte terrestre. El sistema contempla la administración de buses, ciudades, viajes, clientes y pasajes, utilizando archivos CSV para almacenar información.
+Proyecto de la evaluación integradora de Estructuras de Datos, UTFSM.
 
-## Estado del trabajo compartido
+Integrantes:
+- Dante (Dconcham28): buses, ciudades, viajes y los archivos base del proyecto.
+- Yerson Alveal (YersonAlexisMN): clientes.
+- Phillips Rubilar (PhillipsRubilar19): pasajes, anulación, nómina y reportes.
 
-### Módulo de pasajes — rama `phillips`
-Se desarrolló una primera versión del módulo de pasajes, que incluye:
+## De qué se trata
 
-- Clase `Pasaje` y sus atributos.
-- Cálculo del precio según el tramo del viaje.
-- Búsqueda y registro de pasajes.
-- Validación de tramos y asientos.
-- Anulación de pasajes.
-- Listado de pasajes por viaje y pasajes vigentes.
-- Generación del manifiesto de pasajeros.
-- Cálculo de recaudación y disponibilidad de asientos.
+Hicimos un programa de consola en Python para una empresa de buses que viaja entre Concepción y Santiago, pasando por Chillán, Linares, Talca y Rancagua. Permite registrar clientes, buses y viajes, vender pasajes por tramo, anularlos y ver la nómina de pasajeros. Toda la información se guarda en archivos CSV dentro de la carpeta `data`, y los archivos se relacionan entre sí por ID (por ejemplo, un pasaje guarda el id del viaje y el id del cliente, no sus datos completos).
 
-### Módulo de clientes
-Se preparó una implementación local que incluye:
+## Instalación y ejecución
 
-- Clase `Cliente`.
-- Registro y listado de clientes.
-- Búsqueda por código y RUT.
-- Modificación de datos de clientes.
-- Almacenamiento mediante los métodos de `archivos.py`.
+Hay que tener Python 3.10 o superior. Después de clonar el repositorio se instala colorama, que es lo que usamos para los colores:
 
-Estos archivos se están incorporando a la rama `phillips` para que el equipo pueda revisarlos e integrarlos.
+```
+pip install -r requirements.txt
+```
 
-### Otros módulos
-El repositorio también contiene archivos relacionados con buses, ciudades, viajes, configuración, entradas, mensajes y manejo de archivos. La integración general debe ser revisada por el equipo.
+Y para ejecutar:
 
-## Problemas y tareas pendientes
+```
+python main.py
+```
 
-1. **Integración de clientes:** en la última revisión de `origin/yerson`, `clientes.py` y `funcionesclientes.py` aparecían vacíos y `cliente.py` no existía. Se preparó una versión local en la rama `phillips`; debe compararse con la versión definitiva de Yerson para evitar duplicaciones o incompatibilidades.
+Si los archivos de `data` no existen o están vacíos, el programa los crea solo al abrirse.
 
-2. **Formato de pasajes:** revisar la conversión de los objetos `Pasaje` a líneas de texto, ya que las funciones de escritura de `archivos.py` reciben líneas de texto. La clase actualmente dispone de `aLista()` y debe comprobarse su compatibilidad con las funciones de guardado.
+## Cómo lo organizamos
 
-3. **Manifiesto:** revisar el orden solicitado para los pasajeros. La versión actual debe comprobarse para asegurar que ordene por apellido, nombres y número de asiento, según corresponda.
+Tratamos de seguir la forma en que trabajamos en clases: cada entidad tiene su clase en un archivo (`bus.py`, `viaje.py`, `ciudad.py`, `cliente.py`, `pasajes.py`) y sus funciones en otro (`funcionesbuses.py`, `funcionesviajes.py`, etc.). Además hay unos archivos que usamos todos: `config.py` con las rutas y constantes, `archivos.py` para leer y guardar los CSV, `entradas.py` para pedir datos validando lo que escribe el usuario, y `mensajes.py` para los colores. El menú principal está en `main.py`. Todas las funciones tienen tipado.
 
-4. **Dependencias entre módulos:** verificar que los nombres de funciones y las importaciones coincidan entre pasajes, viajes, buses, ciudades y clientes.
+## Estructuras y algoritmos
 
-5. **Menús e integración:** comprobar que el menú de pasajes y los demás menús estén conectados correctamente al programa principal.
+Usamos una lista enlazada (`listaenlazada.py`) para cargar los buses, viajes y clientes cuando se leen los archivos. Cada nodo guarda el ID y el objeto, y apunta al siguiente. Nos sirvió para buscar por ID recorriendo los nodos, para no dejar entrar IDs repetidos y para sacar el siguiente ID cuando se registra algo nuevo.
 
-6. **Pruebas generales:** ejecutar pruebas de registro, búsqueda, modificación, anulación, validación de asientos, lectura y escritura de archivos CSV.
+Para ordenar la nómina usamos el método de la burbuja, porque no se podía usar sort(). Se va comparando cada pasajero con el siguiente y se cambian de lugar si están en el orden equivocado, hasta que ya no haya cambios. Lo elegimos porque es el que vimos en clases y para una lista del tamaño de un bus funciona bien. Se puede ordenar por apellido paterno, por nombres o por asiento. Si hay empate, por apellido se mira después el apellido materno y los nombres; por nombres se mira el apellido; y por asiento (cuando el mismo asiento se usa en tramos distintos) se ordena según la ciudad donde se sube. Antes de comparar sacamos las tildes para que, por ejemplo, Ávila quede antes que Bravo. El orden se hace sobre una copia, así que no cambia el archivo.
 
-7. **Ejecución local:** queda pendiente completar la prueba de ejecución del proyecto en el entorno local.
+También usamos búsqueda secuencial para cosas como buscar un bus por patente o un cliente por RUT.
 
-## Indicaciones para la integración
+## Algunas reglas que validamos
 
-- La rama `phillips` contiene el trabajo del módulo de pasajes y los archivos locales preparados para clientes.
-- La rama `yerson` debe revisarse para confirmar que sus archivos definitivos estén publicados.
-- La integración final en `main` queda a cargo de quien coordine la integración del proyecto.
-- Antes de integrar, revisar las importaciones, nombres de archivos, funciones y encabezados CSV para evitar incompatibilidades.
+El precio del pasaje se calcula solo: por cada tramo del recorrido que no se usa se descuenta un 10% de la tarifa base. Un asiento se puede vender varias veces en el mismo viaje si los tramos no se topan, por ejemplo Concepción-Chillán y después Chillán-Talca. Al anular un pasaje no se borra, solo cambia su estado, y así el asiento queda libre únicamente en ese tramo; los anulados no cuentan en la recaudación.
 
-## Importante
-Este documento describe el estado del trabajo al momento de su entrega. Los módulos y funcionalidades mencionados deben revisarse y probarse en conjunto antes de considerar el proyecto completamente integrado y terminado.
+Otras validaciones: el RUT se revisa con su dígito verificador y no se puede repetir, la patente tiene formato chileno y tampoco se repite, la capacidad del bus va de 1 a 60, los viajes solo pueden ser Concepción-Santiago o al revés, y un mismo bus no puede tener dos viajes con menos de 6 horas de diferencia.
+
+## Pruebas
+
+Probamos los casos que pedía el enunciado (RUT y patente repetidos, tarifas, asientos en tramos que se topan y que no, anulación, nómina ordenada, recaudación y cerrar y abrir el programa). Las capturas están en la carpeta `evidencias`.
+
+## Git
+
+Cada uno trabajó en su propia rama (dante, yerson y phillips) y al final juntamos todo en main con merge.
