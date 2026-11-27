@@ -1,9 +1,9 @@
 
-
 from archivos import leerRegistros, agregarRegistro, reescribirArchivo
 from config import ARCHIVO_PASAJES, ENCABEZADO_PASAJES
 from config import ESTADO_VIGENTE, ESTADO_ANULADO
 from pasajes import Pasaje, calcularPrecio
+from viaje import Viaje
 
 from funcionesviajes import buscarxCodigo as buscarViaje
 from funcionesviajes import sentidoViaje
@@ -16,7 +16,6 @@ import funcionesviajes
 
 from entradas import confirmar, pedirEntero
 from mensajes import advertencia, encabezado, error, exito, titulo
-
 
 
 def cargarPasajes() -> list[Pasaje]:
@@ -64,7 +63,8 @@ def guardarPasaje(pasaje: Pasaje) -> bool:
     )
 
 
-def validarTramo(viaje: Viaje, id_origen: str, id_destino: str) -> bool:    sentido = sentidoViaje(viaje)
+def validarTramo(viaje: Viaje, id_origen: str, id_destino: str) -> bool:
+    sentido = sentidoViaje(viaje)
 
     pos_inicio_viaje = posicionCiudad(viaje.id_origen)
     pos_final_viaje = posicionCiudad(viaje.id_destino)
@@ -426,7 +426,8 @@ def elegirCiudad(mensaje: str) -> str:
     return str(ciudades[opcion - 1].id_ciudad)
 
 
-def mostrarViajeElegido(viaje: Viaje) -> None:    print(f"\n    VIAJE {viaje.id_viaje}: {funcionesviajes.recorrido(viaje)} | "
+def mostrarViajeElegido(viaje: Viaje) -> None:
+    print(f"\n    VIAJE {viaje.id_viaje}: {funcionesviajes.recorrido(viaje)} | "
           f"{viaje.fecha} {viaje.hora} | tarifa base ${viaje.tarifa_base} | "
           f"capacidad {capacidadBus(viaje.id_bus)} asientos")
 
