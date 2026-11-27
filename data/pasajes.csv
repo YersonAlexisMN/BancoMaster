@@ -1,0 +1,4 @@
+id_pasaje,id_viaje,id_cliente,id_origen,id_destino,asiento,valor,estado
+1,1,1,1,6,5,10000,vigente
+2,1,1,1,6,2,10000,vigente
+3,2,1,6,5,1,7200,vigente
